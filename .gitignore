@@ -1,0 +1,19 @@
+# Build
+bin/
+obj/
+
+# VS Code
+.vscode/
+
+# Rider / Visual Studio
+.vs/
+
+# Secrets
+.env
+.env.*
+
+# User secrets
+secrets.json
+
+# macOS
+.DS_Store
