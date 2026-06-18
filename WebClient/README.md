@@ -197,6 +197,7 @@ WebClient/
 │   └── index.ts
 │
 ├── index.html
+├── styles.css
 ├── main.ts
 ├── openapi.json
 ├── package.json
