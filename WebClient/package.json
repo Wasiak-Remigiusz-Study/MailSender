@@ -1,0 +1,21 @@
+{
+  "name": "webclient",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.29.0",
+    "@types/node": "^25.9.3",
+    "openapi-typescript-codegen": "^0.30.0",
+    "typescript": "^6.0.3",
+    "vite": "^6.4.3"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "types": ["vite/client"],
+    "target": "ES2020",
+    "module": "ES2020",
+    "moduleResolution": "bundler",
+    "outDir": "./dist",
+    "strict": false,
+    "esModuleInterop": true
+  },
+  "include": ["main.ts", "generated-ts/**/*.ts"]
+}
