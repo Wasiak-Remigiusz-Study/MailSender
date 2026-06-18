@@ -3,19 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <title>Mail Sender</title>
+    <link rel="stylesheet" href="./styles.css" />
   </head>
+
   <body>
-    <h2>Wyślij wiadomość</h2>
+    <div class="container">
+      <h2>Wyślij wiadomość</h2>
 
-    <input id="to" placeholder="Do" /><br /><br />
+      <input id="token" placeholder="Token" />
 
-    <input id="subject" placeholder="Temat" /><br /><br />
+      <input id="to" placeholder="Do" />
 
-    <textarea id="body" placeholder="Treść"></textarea><br /><br />
+      <input id="subject" placeholder="Temat" />
 
-    <button onclick="sendMail()">Wyślij</button>
+      <textarea id="body" placeholder="Treść"></textarea>
+
+      <button onclick="sendMail()">Wyślij</button>
+    </div>
 
     <script type="module" src="./main.js"></script>
-    <!-- <script type="module" src="./dist/main.js"></script> -->
   </body>
 </html>
