@@ -5,3 +5,4 @@ obj/
 .env
 secrets.json
 .DS_Store
+node_modules/
