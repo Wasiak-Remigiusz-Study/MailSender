@@ -19,7 +19,7 @@ public class ClientAppService
     {
         var indexNumber = _configuration["Student:IndexNumber"] ?? string.Empty;
         var indexSuffix = indexNumber.Length >= 2 ? indexNumber[^2..] : indexNumber;
-        var expectedPassword = $"q##wa{indexSuffix}";
+        var expectedPassword = $"q##waQ{indexSuffix}";
         
         if (pass != expectedPassword)
         {
