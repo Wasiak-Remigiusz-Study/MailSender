@@ -17,7 +17,8 @@ public class MailTrapMailSender : IMailSenderProvider
 
     public async Task SendEmailAsync(string to, string subject, string body)
     {
-        var apiKey = _configuration["MailTrap:ApiKey"] ?? "dummy-key";
+        var apiKey = _configuration["MailTrap:ApiKey"] 
+            ?? throw new InvalidOperationException("MailTrap API Key is missing in configuration.");
 
         var payload = new
         {
