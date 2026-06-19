@@ -10,6 +10,15 @@ W zadaniu 3 aplikacja została zrefaktoryzowana do modelu warstwowego (Clean Arc
 
 Zastosowano tu wzorzec Dependency Injection do dynamicznej podmiany sposobu wysyłki e-maili.
 
+### Jak podmienić dostawcę e-mail?
+Domyślnym dostawcą w aplikacji jest `BrevoMailSender`. Aby przełączyć aplikację na korzystanie z MailTrap, otwórz plik `Program.cs` i podmień rejestrację w kontenerze DI (Dependency Injection) poprzez zakomentowanie Brevo i odkomentowanie MailTrap:
+```csharp
+// builder.Services.AddTransient<IMailSenderProvider, BrevoMailSender>();
+// mailtrap provider
+builder.Services.AddTransient<IMailSenderProvider, MailTrapMailSender>();
+```
+Po ponownym uruchomieniu aplikacji wszystkie wysyłane maile będą z MailTrap.
+
 ## Zadanie 4: Logi i Baza Danych (InMemory)
 Zadanie 4 wprowadza obsługę bazy danych Entity Framework Core (In-Memory).
 - Rejestracja nowej aplikacji klienta jest sprawdzana pod kątem unikalności (`AppId` i `AppName`). Duplikaty otrzymują status `409 Conflict`.
