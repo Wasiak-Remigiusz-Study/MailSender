@@ -37,7 +37,7 @@ public class ClientAppController : ControllerBase
         {
             return Conflict(new
             {
-                error = $"Client app duplicated. Existing {regResult.AppId} {regResult.AppName}"
+                error = $"client app duplication. Exisiting {regResult.AppId} {regResult.AppName}"
             });
         }
 
