@@ -58,6 +58,8 @@ builder.Services.AddScoped<MailService>();
 builder.Services.AddHttpClient<BrevoMailSender>();
 builder.Services.AddHttpClient<MailTrapMailSender>();
 builder.Services.AddTransient<IMailSenderProvider, BrevoMailSender>();
+// mailtrap provider
+//builder.Services.AddTransient<IMailSenderProvider, MailTrapMailSender>();
 
 builder.Services
 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

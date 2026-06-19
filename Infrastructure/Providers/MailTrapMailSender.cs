@@ -23,7 +23,7 @@ public class MailTrapMailSender : IMailSenderProvider
         {
             from = new
             {
-                email = "hello@example.com",
+                email = "hello@demomailtrap.com",
                 name = "Mailtrap Test"
             },
             to = new[]
