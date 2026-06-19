@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MailSender.Models;
 using MailSender.Services.Jwt;
-using MailSender.Services;
+using MailSender.Application.Services;
 
 namespace MailSender.Controllers;
 

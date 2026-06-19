@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MailSender.Models;
-using MailSender.Services;
+using MailSender.Application.Services;
 
 namespace MailSender.Controllers;
 

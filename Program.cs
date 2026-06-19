@@ -1,4 +1,7 @@
+using MailSender.Application.Services;
 using MailSender.Services;
+using MailSender.Core.Interfaces;
+using MailSender.Infrastructure.Providers;
 using MailSender.Services.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -45,7 +48,10 @@ var jwtConfig = jwtSection.Get<JwtSettings>() ?? throw new InvalidOperationExcep
 builder.Services.AddJwtTokenService(jwtSection);
 
 builder.Services.AddScoped<ClientAppService>();
-builder.Services.AddHttpClient<MailService>();
+builder.Services.AddScoped<MailService>();
+builder.Services.AddHttpClient<BrevoMailSender>();
+builder.Services.AddHttpClient<MailTrapMailSender>();
+builder.Services.AddTransient<IMailSenderProvider, BrevoMailSender>();
 
 builder.Services
 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

@@ -1,14 +1,15 @@
 using System.Text;
 using System.Text.Json;
+using MailSender.Core.Interfaces;
 
-namespace MailSender.Services;
+namespace MailSender.Infrastructure.Providers;
 
-public class MailService
+public class BrevoMailSender : IMailSenderProvider
 {
     private readonly IConfiguration _configuration;
     private readonly HttpClient _httpClient;
 
-    public MailService(IConfiguration configuration, HttpClient httpClient)
+    public BrevoMailSender(IConfiguration configuration, HttpClient httpClient)
     {
         _configuration = configuration;
         _httpClient = httpClient;
@@ -16,9 +17,6 @@ public class MailService
 
     public async Task SendEmailAsync(string to, string subject, string body)
     {
-        subject = ProcessSubject(subject);
-        body = ProcessBody(body);
-
         var apiKey = _configuration["Brevo:ApiKey"];
 
         var payload = new
@@ -44,31 +42,5 @@ public class MailService
 
         var response = await _httpClient.SendAsync(request);
         response.EnsureSuccessStatusCode();
-    }
-
-    private string ProcessSubject(string subject)
-    {
-        if (subject.EndsWith('?'))
-        {
-            return $"[Q]{subject}";
-        }
-
-        return subject;
-    }
-
-    private string ProcessBody(string body)
-    {
-        var surname = _configuration["Student:Surname"];
-        if (string.IsNullOrWhiteSpace(surname))
-        {
-            return body;
-        }
-
-        if (!body.Contains(surname))
-        {
-            return body;
-        }
-
-        return body.Replace(surname, $"[student.surname]{surname}[/student.surname]");
     }
 }

@@ -1,4 +1,4 @@
-namespace MailSender.Services;
+namespace MailSender.Application.Services;
 public class ClientAppService
 {
     private readonly IConfiguration _configuration;
