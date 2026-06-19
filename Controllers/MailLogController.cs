@@ -28,6 +28,8 @@ public class MailLogController : ControllerBase
             .Select(m => new
             {
                 m.Id,
+                AppId = m.ClientApp.AppId,
+                AppName = m.ClientApp.AppName,
                 m.Status,
                 m.Recipient,
                 m.Subject,
@@ -56,6 +58,8 @@ public class MailLogController : ControllerBase
         return Ok(new
         {
             log.Id,
+            AppId = log.ClientApp.AppId,
+            AppName = log.ClientApp.AppName,
             log.Status,
             log.Recipient,
             log.Subject,
