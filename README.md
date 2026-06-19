@@ -21,6 +21,6 @@ Po ponownym uruchomieniu aplikacji wszystkie wysyłane maile będą z MailTrap.
 
 ## Zadanie 4: Logi i Baza Danych (InMemory)
 Zadanie 4 wprowadza obsługę bazy danych Entity Framework Core (In-Memory).
-- Rejestracja nowej aplikacji klienta jest sprawdzana pod kątem unikalności (`AppId` i `AppName`). Duplikaty otrzymują status `409 Conflict`.
-- Każde użycie endpointu `/mail/send` kończy się zapisaniem logu do bazy danych, włączając w to dane adresata, temat, oraz status "powodzenie" lub "błąd".
+- Rejestracja nowej aplikacji klienta jest sprawdzana pod kątem unikalności (`AppId` i `AppName`). Duplikaty otrzymują status `409 Conflict`. Wymuszony jest rygorystyczny format hasła: `q##waQ{dwie_ostatnie_cyfry_indeksu}`.
+- Każde użycie endpointu `/mail/send` kończy się zapisaniem logu do bazy danych, włączając w to dane adresata, temat, status "powodzenie" lub "błąd", a także informacje identyfikujące aplikację (AppId oraz AppName).
 - Utworzono nowe autoryzowane endpointy `/mail-log` oraz `/mail-log/{id}`, które filtrują i wyświetlają tylko logi wygenerowane przez aplikację klienta posiadającą dany Token JWT.
