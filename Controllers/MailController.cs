@@ -23,7 +23,7 @@ public class MailController : ControllerBase
         var appId = User.FindFirst("appId")?.Value;
         var appName = User.FindFirst("appName")?.Value;
 
-        await _mailService.SendEmailAsync(request.To, request.Subject, request.Body);
+        await _mailService.SendEmailAsync(appId!, request.To, request.Subject, request.Body);
 
         return Accepted(new
             {

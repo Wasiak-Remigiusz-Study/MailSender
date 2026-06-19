@@ -8,9 +8,15 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 using System.Text;
 
+using Microsoft.EntityFrameworkCore;
+using MailSender.Infrastructure.Data;
+
 DotNetEnv.Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseInMemoryDatabase("MailSenderDb"));
 
 builder.Services.AddControllers();
 

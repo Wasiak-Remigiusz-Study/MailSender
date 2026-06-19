@@ -11,6 +11,7 @@ public class ClientAppController : ControllerBase
 {
     private readonly ClientAppService _clientAppService;
     private readonly JwtTokenService _jwtTokenService;
+
     public ClientAppController(
         ClientAppService clientAppService,
         JwtTokenService jwtTokenService)
@@ -20,7 +21,7 @@ public class ClientAppController : ControllerBase
     }
 
     [HttpPost("register")]
-    public IActionResult Register(RegisterClientRequest request)
+    public async Task<IActionResult> Register(RegisterClientRequest request)
     {
         var validation = _clientAppService.ValidatePassword(request.Pass);
         if (!validation.IsValid)
@@ -30,6 +31,16 @@ public class ClientAppController : ControllerBase
                 error = $"Invalid index-based password {validation.IndexSuffix}"
             });
         }
+
+        var regResult = await _clientAppService.RegisterAppAsync(request.AppId, request.AppName);
+        if (!regResult.IsSuccess)
+        {
+            return Conflict(new
+            {
+                error = $"Client app duplicated. Existing {regResult.AppId} {regResult.AppName}"
+            });
+        }
+
         var token = _jwtTokenService.GenerateToken(request.AppId, request.AppName);
         return Ok(new RegisterClientResponse
         {
